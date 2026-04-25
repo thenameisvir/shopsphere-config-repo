@@ -1,6 +1,5 @@
 server:
   port: 8082
-
 spring:
   application:
     name: catalogservice
@@ -16,7 +15,11 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
-
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 eureka:
   client:
     service-url:
