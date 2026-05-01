@@ -1,5 +1,5 @@
 server:
   port: 8085
 razorpay:
-  key-id: your_key_id_here
-  key-secret: your_key_secret_here
+  key-id: rzp_test_Sk0s5FcAaqhzCy
+  key-secret: 9lgyWT4CKoCaGRthXmjebfUx
