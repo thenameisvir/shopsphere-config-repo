@@ -54,6 +54,70 @@
 # jwt:
 #   secret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
 
+# server:
+#   port: 8080
+
+# spring:
+#   application:
+#     name: api-gateway
+#   cloud:
+#     gateway:
+#       globalcors:
+#         add-to-idm-strategy: true
+#         cors-configurations:
+#           '[/**]':
+#             allowedOrigins: "http://localhost:4200"
+#             allowedMethods: "*"
+#             allowedHeaders: "*"
+#             allowCredentials: true
+#       httpclient:
+#         connect-timeout: 10000
+#         response-timeout: 30s
+#       routes:
+#         - id: auth-service
+#           uri: lb://authservice
+#           predicates:
+#             - Path=/gateway/auth/**
+#           filters:
+#             - StripPrefix=1
+
+#         - id: catalog-service
+#           uri: lb://catalogservice
+#           predicates:
+#             - Path=/gateway/catalog/**
+#           filters:
+#             - StripPrefix=1
+
+#         - id: order-service
+#           uri: lb://orderservice
+#           predicates:
+#             - Path=/gateway/orders/**
+#           filters:
+#             - StripPrefix=1
+
+#         - id: admin-service
+#           uri: lb://adminservice
+#           predicates:
+#             - Path=/gateway/admin/**
+#           filters:
+#             - StripPrefix=1
+
+# eureka:
+#   client:
+#     service-url:
+#       defaultZone: http://localhost:8761/eureka/
+#   instance:
+#     prefer-ip-address: true
+
+# management:
+#   endpoints:
+#     web:
+#       exposure:
+#         include: "*"
+
+# jwt:
+#   secret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
+
 server:
   port: 8080
 
@@ -102,6 +166,14 @@ spring:
           filters:
             - StripPrefix=1
 
+        # Naya Payment Service Route
+        - id: payment-service
+          uri: lb://paymentservice
+          predicates:
+            - Path=/gateway/payment/**
+          filters:
+            - StripPrefix=1
+
 eureka:
   client:
     service-url:
@@ -117,3 +189,4 @@ management:
 
 jwt:
   secret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
+
